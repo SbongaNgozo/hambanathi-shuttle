@@ -26,6 +26,10 @@ html {
     background-color: var(--text-light);
 }
 
+body {
+    line-height: 1.6;
+}
+
 /* 2. NAVIGATION BAR */
 .navbar {
     position: fixed;
@@ -91,7 +95,6 @@ html {
 /* 3. HERO SECTION (Premium Dark Aesthetic) */
 .hero {
     height: 100vh;
-    /* Cleaned image location reference pointing to the root workspace directory folder path */
     background: linear-gradient(rgba(0, 40, 61, 0.75), rgba(0, 20, 30, 0.9)), 
                 url('../V Class.jpg') no-repeat center center/cover;
     display: flex;
