@@ -130,18 +130,15 @@ a  { text-decoration: none; color: inherit; }
 /* 3. NAVIGATION */
 /* 1. Ensure the Navbar always stays on top */
 /* 3. NAVIGATION */
+/* --- Navigation Core --- */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
-}
-
-.navbar.scrolled {
-    background: rgba(0,28,40,0.97);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    z-index: 9999;
+    background: transparent;
+    transition: background 0.3s ease;
 }
 
 .nav-container {
@@ -151,28 +148,37 @@ a  { text-decoration: none; color: inherit; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: padding var(--t) var(--ease);
 }
-.navbar.scrolled .nav-container { padding: 15px 40px; }
 
-/* ... (Keep your existing .nav-logo, .nav-menu, .nav-link, .nav-cta styles here) ... */
-
-/* Hamburger Button Base Style */
 .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 1001;
+    display: none; /* Hidden on desktop */
 }
-.nav-toggle span {
-    display: block;
-    width: 24px; height: 1.5px;
-    background: var(--white);
-    transition: all 0.3s var(--ease);
+
+/* --- Mobile Styles (Screens <= 768px) --- */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-menu {
+        display: none; /* Hidden by default */
+        position: fixed;
+        inset: 0;
+        background: var(--midnight-dk);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-menu.open {
+        display: flex; /* Shown when JS adds .open */
+    }
 }
 
 /* 4. HERO */
@@ -857,11 +863,13 @@ a.contact-value:hover { color: var(--gold); }
         justify-content: center;
         align-items: center;
         z-index: 999;
+        /* Start off-screen */
         transform: translateY(-100%);
         transition: transform 0.4s var(--ease);
     }
     
     .nav-menu.open { transform: translateY(0); }
+}
 
     .nav-link {
         font-size: 1.2rem;
@@ -929,8 +937,8 @@ a.contact-value:hover { color: var(--gold); }
 /* Ensure the menu resets to a standard navbar on desktop */
 @media (min-width: 769px) {
     .nav-menu {
-        display: flex !important;
-        transform: none !important;
+        display: flex !important; /* Force row */
+        transform: none !important; /* Kill the mobile slide-in */
         position: static !important;
         background: transparent !important;
         height: auto !important;
