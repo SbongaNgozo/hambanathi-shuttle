@@ -916,36 +916,46 @@ a.contact-value:hover { color: var(--gold); }
     /* Mobile nav */
     .nav-toggle { display: flex; }
     .nav-container { padding: 18px 24px; }
+    
     .nav-menu {
         display: none;
         flex-direction: column;
-        gap: 0;
         position: fixed;
         inset: 0;
         background: var(--midnight-dk);
         justify-content: center;
         align-items: center;
         z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none; /* Prevents hidden menu from blocking clicks */
     }
-    .nav-menu.open { display: flex; }
+    
+    .nav-menu.open {
+        display: flex;
+        opacity: 1;
+        pointer-events: auto; /* Enables clicks when open */
+    }
+
     .nav-link {
-        font-size: 1rem;
-        padding: 18px 0;
+        font-size: 1.2rem;
+        padding: 20px 0;
         color: var(--white);
     }
+    
     .nav-cta { border-color: var(--gold); margin-top: 20px; }
 
     .hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers all content */
-    text-align: center;
-    padding: 120px 24px 80px;
-    margin-left: 0;
-   }
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 120px 24px 80px;
+        margin-left: 0;
+    }
     .hero-scroll-indicator { display: none; }
 
     .trust-container { gap: 20px; }
