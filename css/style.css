@@ -289,9 +289,11 @@ a  { text-decoration: none; color: inherit; }
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 760px;
-    padding: 120px 40px 80px;
-    margin-left: max(40px, calc((100vw - 1160px) / 2));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Keeps everything else centered */
+    padding: 120px 24px 80px;
     animation: heroIn 1.2s var(--ease-out) both;
 }
 
@@ -316,14 +318,28 @@ a  { text-decoration: none; color: inherit; }
 
 .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
     font-weight: 600;
     color: var(--white);
-    line-height: 1.12;
+    line-height: 0.9;
     margin-bottom: 28px;
+    
+    /* Forces full-width and perfect centering */
+    width: 100vw; 
+    max-width: 100%;
+    text-align: center;
+    padding: 0 20px;
+    
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
     animation: heroIn 1s 0.35s var(--ease-out) both;
 }
-.hero-title em { font-style: italic; color: var(--gold); }
+.hero-title em { 
+    font-style: italic; 
+    color: var(--gold); 
+    display: block; 
+    font-weight: 400; /* Ensure italics feel airy and high-end */
+    margin-top: 8px; /* Adds breathing room between lines */
+}
 
 .hero-copy {
     font-size: 1.08rem;
@@ -487,7 +503,7 @@ a  { text-decoration: none; color: inherit; }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2x2 layout */
     gap: 2px;
     background: rgba(0,40,61,0.06);
     border: 1px solid rgba(0,40,61,0.06);
@@ -498,10 +514,15 @@ a  { text-decoration: none; color: inherit; }
     padding: 44px 36px 40px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
-    overflow: hidden;
+    min-height: 300px; /* Ensures consistent card height */
 }
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack into 1 column on smaller screens */
+    }
+}
+
 .service-card::before {
     content: '';
     position: absolute;
@@ -815,19 +836,30 @@ a.contact-value:hover { color: var(--gold); }
     gap: 12px;
     margin-bottom: 8px;
 }
+/* 1. Logo text in footer */
 .footer-logo span {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    color: var(--white);
+    color: #D4AF37 !important; /* Gold */
 }
+
+/* 2. Main Slogan (Great Vibes) */
 .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--gold);
-    margin-bottom: 32px;
+    font-family: 'Great Vibes', cursive !important;
+    color: #D4AF37 !important; /* Gold */
+    font-size: 2.5rem !important;
+    text-align: center;
+    margin-bottom: 0 !important;
+    display: block;
+}
+
+/* 3. Sub-slogan (SHUTTLES & TRANSFERS) */
+.sub-slogan {
+    display: block !important;
+    font-family: 'DM Sans', sans-serif !important;
+    color: #D4AF37 !important; /* Gold */
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3em !important;
+    margin-top: 10px !important;
 }
 .footer-links {
     display: flex;
@@ -903,7 +935,17 @@ a.contact-value:hover { color: var(--gold); }
     }
     .nav-cta { border-color: var(--gold); margin-top: 20px; }
 
-    .hero-content { padding: 100px 24px 60px; margin-left: 0; }
+    .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all content */
+    text-align: center;
+    padding: 120px 24px 80px;
+    margin-left: 0;
+   }
     .hero-scroll-indicator { display: none; }
 
     .trust-container { gap: 20px; }
@@ -920,7 +962,23 @@ a.contact-value:hover { color: var(--gold); }
 }
 
 @media (max-width: 480px) {
-    .hero-title { font-size: 2.1rem; }
+    .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    font-weight: 500; /* Slightly lighter weight for a more elegant feel */
+    color: var(--white);
+    line-height: 0.95; /* Slightly more open than before */
+    letter-spacing: -0.02em; /* Tight, sophisticated tracking */
+    margin-bottom: 32px;
+    
+    width: 100vw; 
+    max-width: 100%;
+    text-align: center;
+    padding: 0 20px;
+    
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: heroIn 1s 0.35s var(--ease-out) both;
+}
     .hero-actions { flex-direction: column; }
     .btn-primary, .btn-ghost { text-align: center; width: 100%; }
     .service-card { padding: 32px 24px; }
