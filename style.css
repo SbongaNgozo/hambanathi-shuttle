@@ -91,8 +91,9 @@ html {
 /* 3. HERO SECTION (Premium Dark Aesthetic) */
 .hero {
     height: 100vh;
+    /* Cleaned image location reference pointing to the root workspace directory folder path */
     background: linear-gradient(rgba(0, 40, 61, 0.75), rgba(0, 20, 30, 0.9)), 
-                url('../assets/vehicles/v-class.jpg') no-repeat center center/cover;
+                url('../V Class.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     padding: 0 10%;
@@ -419,6 +420,6 @@ footer p {
         gap: 25px;
     }
     .nav-menu {
-        display: none; /* Can be targeted with JS for mobile toggle later */
+        display: none;
     }
 }
