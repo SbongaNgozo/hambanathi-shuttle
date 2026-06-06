@@ -3,147 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hambanathi Shuttle Services | Premium Chauffeur & Shuttles</title>
+    <title>Hambanathi Shuttle Services | Premium Chauffeur & Transfers</title>
+    <meta name="description" content="Hambanathi Shuttle Services — trusted airport transfers, executive transport, and safe school shuttles in Johannesburg. Founded by Trust Kakaza. Call 071 127 1315.">
+    <meta name="keywords" content="airport shuttle Johannesburg, OR Tambo transfers, Lanseria airport shuttle, executive transport, school transport Johannesburg, chauffeur service">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo-text">HAMBANATHI</a>
-            <div class="nav-menu">
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#services">Our Services</a>
-                <a href="#fleet">Our Fleet</a>
-                <a href="#contact" class="btn-nav">Book A Ride</a>
+            <a href="#home" class="nav-logo">
+                <svg class="logo-icon" width="38" height="38" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 10 C30 18, 42 32, 52 52 C45 42, 35 30, 28 18 Z" fill="#D4AF37"/>
+                    <path d="M52 52 C42 68, 28 82, 18 98 C25 88, 36 74, 48 60 Z" fill="#D4AF37"/>
+                    <path d="M100 10 C90 18, 78 32, 68 52 C75 42, 85 30, 92 18 Z" fill="#D4AF37"/>
+                    <path d="M68 52 C78 68, 92 82, 102 98 C95 88, 84 74, 72 60 Z" fill="#D4AF37"/>
+                    <ellipse cx="60" cy="52" rx="7" ry="5" fill="#D4AF37"/>
+                </svg>
+                <span class="logo-wordmark">HAMBANATHI</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#services" class="nav-link">Our Services</a>
+                <a href="#fleet" class="nav-link">Our Fleet</a>
+                <a href="#contact" class="nav-link nav-cta">Book A Ride</a>
             </div>
         </div>
     </nav>
 
     <header id="home" class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-subtitle">Welcome to Hambanathi</span>
-            <h1>Come travel with us, and enjoy safe, punctual and personal trips.</h1>
-            <p>Hambanathi means ‘come travel with us’ in isiXhosa, and that warm, friendly African hospitality is at the heart of everything we do. Where would you like us to take you, next?</p>
-            <a href="#contact" class="btn-primary">Book your ride</a>
+            <div class="hero-badge">
+                <span class="badge-line"></span>
+                <span>Welcome to Hambanathi</span>
+                <span class="badge-line"></span>
+            </div>
+            <h1 class="hero-title">Come travel with us,<br><em>and arrive in style.</em></h1>
+            <p class="hero-copy">Hambanathi means <em>'come travel with us'</em> in isiXhosa, and that warm, friendly African hospitality is at the heart of everything we do. Where would you like us to take you, next?</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Book Your Ride</a>
+                <a href="#about" class="btn-ghost">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </header>
 
-    <section id="about" class="container">
-        <div class="about-grid">
-            <div class="about-text">
-                <span class="section-tag">About Us</span>
-                <h2>We’re the professionals the professionals ask for…</h2>
-                <p>Founded by Trust Kakaza, Hambanathi Shuttle Services was built on three core values: Safety. Punctuality. Friendliness. Over and above our core values, we believe that every journey should begin with peace of mind.</p>
-                <p>So, whether you’re catching an early flight from OR Tambo International, heading to Lanseria International Airport, dropping your children safely at school, a tourist looking to see the popular and off-the-beaten path sights and sounds, or travelling to an executive meeting across town, we’ll get you there safely, comfortably, and on time.</p>
-                <p>Every member of our team is carefully handpicked, trained, and dedicated to providing exceptional service with the Hambanathi Shuttle Service’s personal touch. From executives to schoolchildren, we transport every passenger with care, respect, and responsibility.</p>
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Background-Checked Drivers</span>
             </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <h3>Your safety is our priority</h3>
-                    <p>Every driver is background-checked and trained to ensure a smooth, secure journey.</p>
+            <div class="trust-divider">·</div>
+            <div class="trust-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                <span>Always Punctual</span>
+            </div>
+            <div class="trust-divider">·</div>
+            <div class="trust-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Executives to Schoolchildren</span>
+            </div>
+            <div class="trust-divider">·</div>
+            <div class="trust-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                <span>Mon–Sun, 5am–10pm</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="about section-pad">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text" data-reveal>
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">We're the professionals<br>the professionals ask for…</h2>
+                    <p>Founded by Trust Kakaza, Hambanathi Shuttle Services was built on three core values: <strong>Safety. Punctuality. Friendliness.</strong> Over and above our core values, we believe that every journey should begin with peace of mind.</p>
+                    <p>Whether you're catching an early flight from OR Tambo International, heading to Lanseria International Airport, dropping your children safely at school, a tourist exploring the sights and sounds, or travelling to an executive meeting across town — we'll get you there safely, comfortably, and on time.</p>
+                    <p>Every member of our team is carefully handpicked, trained, and dedicated to providing exceptional service. From executives to schoolchildren, we transport every passenger with care, respect, and responsibility.</p>
                 </div>
-                <div class="stat-card">
-                    <h3>Always on time</h3>
-                    <p>Punctuality isn’t just a promise — it’s the standard by which we’re measured.</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Comfort and care</h3>
-                    <p>Clean vehicles, professional drivers, and exceptionally friendly service.</p>
+                <div class="about-cards" data-reveal data-delay="0.2">
+                    <div class="value-card">
+                        <div class="value-number">01</div>
+                        <h3>Your safety is our priority</h3>
+                        <p>Every driver is background-checked and trained to ensure a smooth, secure journey.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-number">02</div>
+                        <h3>Always on time</h3>
+                        <p>Punctuality isn't just a promise — it's the standard by which we're measured.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-number">03</div>
+                        <h3>Comfort and care</h3>
+                        <p>Clean vehicles, professional drivers, and exceptionally friendly service, every ride.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="services section-pad">
+        <div class="services-bg-text">HAMBANATHI</div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">What We Offer</span>
-                <h2>Our Premium Shuttle Services</h2>
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">What We <em>Offer</em></h2>
+                <p class="section-sub">Hambanathi makes every journey smooth, secure, and right on time.</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">✈️</div>
-                    <h3>Executive & Airport Transfers</h3>
-                    <p>Our executive airport transfers are trusted by professionals who value punctuality, discretion, and comfort. Our drivers are trained, licensed, and dedicated to providing a seamless shuttle experience every time to OR Tambo or Lanseria.</p>
-                    <a href="#contact" class="btn-secondary">Inquire Now</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏫</div>
-                    <h3>Safe School Transport</h3>
-                    <p>Parents trust Hambanathi to safely transport their children to and from school. From daily commutes to school excursions and sports trips, we make sure every journey is secure, punctual, and supervised.</p>
-                    <a href="#contact" class="btn-secondary">Inquire Now</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🚗</div>
-                    <h3>Everyday & On-Demand Rides</h3>
-                    <p>Hambanathi offers affordable, convenient short-distance trips for errands, appointments, or leisure travel. Think of us as your personal driver service that’s professional, courteous, and always a call away.</p>
-                    <a href="#contact" class="btn-secondary">Inquire Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="fleet" class="container">
-        <div class="fleet-grid">
-            <div class="fleet-image">
-                <img src="V Class.jpg" alt="Hambanathi Mercedes-Benz V-Class Luxury Fleet">
-            </div>
-            <div>
-                <span class="section-tag">Our Fleet</span>
-                <h2>Your journey begins with peace of mind.</h2>
-                <p>Our modern, well-maintained fleet includes sedans, minibuses, and premium vehicles customized for style, comfort, and absolute mechanical safety.</p>
-                <ul class="fleet-features">
-                    <li>✨ Air conditioning and clean interiors</li>
-                    <li>🛰️ GPS tracking for peace of mind</li>
-                    <li>🔧 Regular mechanical inspections</li>
-                    <li>🛡️ Passenger insurance coverage</li>
-                </ul>
-                <p class="fleet-cta-text">Whether you’re travelling solo or in a group, our fleet ensures a comfortable and secure ride every time. So, come travel with us in comfort, cleanliness, and confidence.</p>
-                <a href="#contact" class="btn-primary">Book your ride</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-box">
-                <span class="section-tag" style="color: #D4AF37;">Book A Ride</span>
-                <h2>Experience Premium African Hospitality</h2>
-                <p>Schedule a trip with us and experience the comfort, care, and professionalism of Hambanathi Shuttle Services today. Simply call or WhatsApp Trust Kakaza... and come travel with us.</p>
                 
+                <div class="service-card" data-reveal data-delay="0">
+                    <div class="service-header">
+                        <div class="service-num">01</div>
+                        <div class="service-icon-wrap">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.6a19.79 19.79 0 01-3.07-8.66A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+                        </div>
+                    </div>
+                    <h3>Executive and airport shuttle services</h3>
+                    <p class="service-sub">Arrive relaxed and ready</p>
+                    <p>Our executive airport transfers are trusted by professionals who value punctuality, discretion, and comfort. Our drivers are trained, licensed, and dedicated to providing a seamless shuttle experience every time.</p>
+                    <a href="#contact" class="service-cta">Book This Service →</a>
+                </div>
+
+                <div class="service-card featured" data-reveal data-delay="0.15">
+                    <div class="service-header">
+                        <div class="service-num">02</div>
+                        <div class="service-icon-wrap">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="featured-badge">Client Priority</div>
+                    <h3>Safe school transport for kids</h3>
+                    <p class="service-sub">Total peace of mind</p>
+                    <p>Parents trust Hambanathi to safely transport their children to and from school. From daily school commutes to school excursions and sports trips, we make sure every journey is secure, punctual, and supervised by vetted drivers.</p>
+                    <a href="#contact" class="service-cta">Book This Service →</a>
+                </div>
+
+                <div class="service-card" data-reveal data-delay="0.3">
+                    <div class="service-header">
+                        <div class="service-num">03</div>
+                        <div class="service-icon-wrap">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                    </div>
+                    <h3>Everyday and on-demand rides</h3>
+                    <p class="service-sub">Your friendly local driver, a call away</p>
+                    <p>Whether it’s a short business trip or a quick trip across town, Hambanathi offers affordable, convenient short-distance trips for errands, appointments, or leisure travel designed entirely around your schedule.</p>
+                    <a href="#contact" class="service-cta">Book This Service →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fleet" class="fleet section-pad">
+        <div class="container">
+            <div class="fleet-grid">
+                <div class="fleet-image-wrap" data-reveal>
+                    <div class="fleet-image-inner">
+                        <img src="V Class.jpg" alt="Hambanathi Mercedes-Benz V-Class Premium Fleet Vehicle" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="fleet-placeholder">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(212,175,55,0.4)" stroke-width="1"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                            <span>V Class Fleet</span>
+                        </div>
+                    </div>
+                    <div class="fleet-img-caption">Mercedes-Benz V-Class · Premium Fleet</div>
+                </div>
+                <div class="fleet-text" data-reveal data-delay="0.2">
+                    <span class="section-tag">Our Fleet</span>
+                    <h2 class="section-title">Your journey begins<br>with peace of mind.</h2>
+                    <p>Our modern, well-maintained fleet includes sedans, minibuses, and premium vehicles customised for style, comfort, and absolute mechanical safety.</p>
+                    <ul class="fleet-features">
+                        <li>
+                            <div class="feature-icon">✦</div>
+                            <div><strong>Air conditioning</strong> and spotlessly clean interiors</div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✦</div>
+                            <div><strong>GPS tracking</strong> for real-time peace of mind</div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✦</div>
+                            <div><strong>Regular mechanical inspections</strong> — no surprises</div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✦</div>
+                            <div><strong>Passenger insurance coverage</strong> on every trip</div>
+                        </li>
+                    </ul>
+                    <p class="fleet-tagline"><em>Come travel with us in comfort, cleanliness, and confidence.</em></p>
+                    <a href="#contact" class="btn-primary">Book Your Ride</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section-pad">
+        <div class="contact-bg-pattern"></div>
+        <div class="container">
+            <div class="contact-inner" data-reveal>
+                <span class="section-tag gold">Book A Ride</span>
+                <h2 class="section-title">Experience Premium<br>African Hospitality</h2>
+                <p class="contact-sub">Schedule a trip and experience the comfort, care, and professionalism of Hambanathi Shuttle Services today. Simply call or WhatsApp Trust Kakaza… and come travel with us.</p>
+
                 <div class="contact-details">
                     <div class="contact-item">
-                        <div class="icon">📞</div>
-                        <div>
-                            <h4>Phone / WhatsApp</h4>
-                            <p><a href="https://wa.me/27711271315" target="_blank">071 127 1315</a></p>
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.6a19.79 19.79 0 01-3.07-8.66A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            <span class="contact-label">Phone / WhatsApp</span>
+                            <a href="https://wa.me/27711271315" target="_blank" rel="noopener" class="contact-value">071 127 1315</a>
                         </div>
                     </div>
+                    <div class="contact-divider"></div>
                     <div class="contact-item">
-                        <div class="icon">🕒</div>
-                        <div>
-                            <h4>Operating Hours</h4>
-                            <p style="color: white; font-weight: 700; font-size: 1.1rem; margin-top: 4px;">Mon–Sun | 5:00am – 10:00pm</p>
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            <span class="contact-label">Operating Hours</span>
+                            <span class="contact-value">Mon–Sun · 5:00am – 10:00pm</span>
                         </div>
                     </div>
                 </div>
 
-                <a href="https://wa.me/27711271315?text=Hi%20Trust,%20I%20would%20like%20to%20book%20a%20shuttle%20ride%20with%20Hambanathi." target="_blank" class="btn-whatsapp">
-                    💬 Book via WhatsApp Now
+                <a href="https://wa.me/27711271315?text=Hi%20Trust,%20I%20would%20like%20to%20book%20a%20shuttle%20ride%20with%20Hambanathi." target="_blank" rel="noopener" class="btn-whatsapp">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Book via WhatsApp Now
                 </a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Hambanathi Shuttle Services. All Rights Reserved.</p>
-        <p>Built with absolute care, respect, and responsibility.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 10 C30 18, 42 32, 52 52 C45 42, 35 30, 28 18 Z" fill="#D4AF37"/>
+                    <path d="M52 52 C42 68, 28 82, 18 98 C25 88, 36 74, 48 60 Z" fill="#D4AF37"/>
+                    <path d="M100 10 C90 18, 78 32, 68 52 C75 42, 85 30, 92 18 Z" fill="#D4AF37"/>
+                    <path d="M68 52 C78 68, 92 82, 102 98 C95 88, 84 74, 72 60 Z" fill="#D4AF37"/>
+                    <ellipse cx="60" cy="52" rx="7" ry="5" fill="#D4AF37"/>
+                </svg>
+                <span>HAMBANATHI</span>
+            </div>
+            <p class="footer-tagline"><em>Travel with us</em></p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#fleet">Fleet</a>
+                <a href="#contact">Book A Ride</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hambanathi Shuttle Services. All Rights Reserved.</p>
+                <p>Built with care, respect, and responsibility.</p>
+            </div>
+        </div>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
 </html>

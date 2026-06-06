@@ -1,428 +1,938 @@
 /* ==========================================================================
-   HAMBANATHI SHUTTLE SERVICES - PREMIUM STYLING SPECIFICATION
-   Directory: C:\P_TK\css\style.css
+   1. RESET & VARIABLE INITIALIZATION
    ========================================================================== */
-
-/* 1. RESET & VARIABLE DEFINITIONS */
 :root {
-    --primary-blue: #00283D;       /* Official Dark Midnight Blue from brand assets */
-    --accent-silver: #F4F6F8;     /* Clean Silver-Gray backplate */
-    --text-dark: #1A252C;         /* Soft Charcoal for modern crisp readability */
-    --text-light: #FFFFFF;        /* Pure White */
-    --premium-gold: #D4AF37;      /* Subtle Metallic Gold structural highlights */
-    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --color-primary: #111111;
+    --color-surface: #1a1a1a;
+    --color-surface-card: #222222;
+    --color-gold: #D4AF37;
+    --color-text-main: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.7);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --transition-smooth: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-* {
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-dark);
-    background-color: var(--text-light);
+    text-size-adjust: 100%;
 }
 
 body {
+    background-color: var(--color-primary);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* 2. NAVIGATION BAR */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ==========================================================================
+   2. REUSABLE UTILITIES & LAYOUT
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-pad {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.section-title em {
+    font-style: italic;
+    font-family: var(--font-serif);
+}
+
+.section-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+}
+
+/* Buttons */
+.btn-primary, .btn-ghost, .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: #e5c158;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text-main);
+    margin-left: 1rem;
+}
+
+.btn-ghost:hover {
+    border-color: var(--color-gold);
+    background-color: rgba(212, 175, 55, 0.05);
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 320px;
+}
+
+.btn-whatsapp:hover {
+    background-color: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* Scroll Reveal States */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   3. NAVIGATION HEADER
+   ========================================================================== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 40, 61, 0.98); /* Semi-transparent midnight blue */
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
     z-index: 1000;
-    transition: var(--transition-smooth);
+    padding: 1.75rem 0;
+    transition: padding 0.4s ease, background-color 0.4s ease;
+}
+
+.navbar.scrolled {
+    padding: 1rem 0;
+    background-color: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 0 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
-.logo-text {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--text-light);
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
+    color: var(--color-text-main);
+}
+
+.logo-wordmark {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    font-weight: 600;
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 1rem;
 }
 
-.nav-menu a {
+/* FIXED: Anti-glitch layout specifications for items */
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400; /* Locked structural width container */
     text-decoration: none;
-    color: #B0C4DE;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: color var(--transition-smooth), text-shadow var(--transition-smooth);
+}
+
+/* FIXED: Emulated bold weight using shadows to eliminate sizing jitter loops */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-text-main) !important;
+    text-shadow: 0 0 0.6px #ffffff, 0 0 0.6px #ffffff;
+}
+
+/* Luxury line element alignment */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 10%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-gold);
+    transition: width var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* Menu CTA Action Button Override */
+.nav-menu .nav-cta {
+    background-color: transparent;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold) !important;
+    padding: 0.6rem 1.25rem;
+    margin-left: 1rem;
     transition: var(--transition-smooth);
 }
 
-.nav-menu a:hover {
-    color: var(--text-light);
+.nav-menu .nav-cta::after {
+    display: none;
 }
 
-.btn-nav {
-    background-color: transparent;
-    border: 2px solid var(--text-light);
-    padding: 10px 20px;
-    border-radius: 4px;
+.nav-menu .nav-cta:hover {
+    background-color: var(--color-gold);
+    color: var(--color-primary) !important;
+    text-shadow: none;
 }
 
-.btn-nav:hover {
-    background-color: var(--text-light) !important;
-    color: var(--primary-blue) !important;
+/* Hamburger mobile button setup */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 20px;
+    position: relative;
+    z-index: 1100;
 }
 
-/* 3. HERO SECTION (Premium Dark Aesthetic) */
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-main);
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle span:nth-child(1) { top: 0; }
+.nav-toggle span:nth-child(2) { top: 9px; }
+.nav-toggle span:nth-child(3) { top: 18px; }
+
+/* ==========================================================================
+   4. HERO HERO SECTION
+   ========================================================================== */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 40, 61, 0.75), rgba(0, 20, 30, 0.9)), 
-                url('../V Class.jpg') no-repeat center center/cover;
+    min-height: 700px;
+    position: relative;
     display: flex;
     align-items: center;
-    padding: 0 10%;
-    color: var(--text-light);
+    background-color: #0b0b0b;
+    padding-top: 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(20, 20, 20, 0.2) 0%, rgba(11, 11, 11, 0.9) 80%);
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
-}
-
-.hero-subtitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--premium-gold);
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-.hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 25px;
-    letter-spacing: -1px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #E2E8F0;
-    margin-bottom: 40px;
-    font-weight: 400;
-}
-
-/* BUTTON SYSTEMS */
-.btn-primary {
-    display: inline-block;
-    text-decoration: none;
-    background-color: var(--text-light);
-    color: var(--primary-blue);
-    padding: 16px 35px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: var(--transition-smooth);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-    background-color: var(--premium-gold);
-    color: var(--text-light);
-}
-
-/* 4. CONTENT SECTIONS UTILITIES */
-.container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 40px;
+    padding: 0 2rem;
+    text-align: center;
 }
 
-.section-tag {
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
     font-size: 0.85rem;
-    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--primary-blue);
-    display: block;
-    margin-bottom: 15px;
+    color: var(--color-gold);
+    margin-bottom: 2rem;
 }
 
-h2 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 30px;
+.badge-line {
+    width: 30px;
+    height: 1px;
+    background-color: var(--color-gold);
 }
 
-/* ABOUT US SECTION GRID */
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--color-gold);
+    font-family: var(--font-serif);
+}
+
+.hero-copy {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin: 0 auto 3rem auto;
+    font-weight: 300;
+}
+
+.hero-copy em {
+    color: #ffffff;
+    font-style: normal;
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+}
+
+/* ==========================================================================
+   5. TRUST SUB BAR
+   ========================================================================== */
+.trust-bar {
+    background-color: var(--color-surface);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 0;
+}
+
+.trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.trust-item svg {
+    color: var(--color-gold);
+}
+
+.trust-divider {
+    color: rgba(212, 175, 55, 0.3);
+    font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   6. ABOUT US SECTION
+   ========================================================================== */
 .about-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: start;
 }
 
 .about-text p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
     font-size: 1.05rem;
-    line-height: 1.7;
-    color: #4A5568;
-    margin-bottom: 20px;
 }
 
-.about-stats {
+.about-text p strong {
+    color: #ffffff;
+}
+
+.about-cards {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
-.stat-card {
-    background-color: var(--accent-silver);
-    padding: 25px;
-    border-left: 4px solid var(--primary-blue);
-    border-radius: 0 8px 8px 0;
+.value-card {
+    background-color: var(--color-surface);
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
 }
 
-.stat-card h3 {
-    font-size: 1.2rem;
+.value-number {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: rgba(212, 175, 55, 0.15);
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
     font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 8px;
 }
 
-.stat-card p {
+.value-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.value-card p {
+    color: var(--color-text-muted);
     font-size: 0.95rem;
-    line-height: 1.5;
-    color: #4A5568;
 }
 
-/* 5. SERVICES CARDS (Grid Management) */
+/* ==========================================================================
+   7. SERVICES SECTION
+   ========================================================================== */
 .services {
-    background-color: var(--accent-silver);
+    background-color: var(--color-surface);
+    overflow: hidden;
+}
+
+.services-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16vw;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.01);
+    letter-spacing: 10px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.services .container {
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 5rem;
+}
+
+.section-header .section-sub {
+    margin: 0 auto;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }
 
 .service-card {
-    background-color: var(--text-light);
-    padding: 40px 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    transition: var(--transition-smooth);
+    background-color: var(--color-surface-card);
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.02);
     display: flex;
     flex-direction: column;
+    transition: var(--transition-smooth);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 40, 61, 0.1);
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.service-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.service-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    font-weight: 500;
+}
+
+.service-icon-wrap {
+    color: var(--color-gold);
+    opacity: 0.8;
 }
 
 .service-card h3 {
-    font-size: 1.35rem;
-    color: var(--primary-blue);
-    margin-bottom: 15px;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
 
-.service-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #64748B;
-    margin-bottom: 30px;
-    flex-grow: 1;
-}
-
-.btn-secondary {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: var(--primary-blue);
-    border: 2px solid var(--primary-blue);
-    padding: 12px 20px;
-    font-weight: 700;
+.service-card .service-sub {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: 4px;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem;
+}
+
+.service-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    flex-grow: 1;
+}
+
+.service-cta {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    font-weight: 500;
     transition: var(--transition-smooth);
 }
 
-.service-card:hover .btn-secondary {
-    background-color: var(--primary-blue);
-    color: var(--text-light);
+.service-card:hover .service-cta {
+    color: var(--color-gold);
+    padding-left: 5px;
 }
 
-/* 6. FLEET DISPLAY SECTION */
+/* Featured variation modifier card styling */
+.service-card.featured {
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background-gradient: linear-gradient(145deg, #262626, #1e1e1e);
+    position: relative;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 0;
+    right: 3rem;
+    transform: translateY(-50%);
+    background-color: var(--color-gold);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.35rem 1rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   8. FLEET FLEET SECTION
+   ========================================================================== */
 .fleet-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem;
     align-items: center;
 }
 
-.fleet-image img {
+.fleet-image-wrap {
+    position: relative;
+}
+
+.fleet-image-inner {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fleet-image-inner img {
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--transition-smooth);
+}
+
+.fleet-image-wrap:hover .fleet-image-inner img {
+    transform: scale(1.04);
+}
+
+.fleet-placeholder {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--color-text-muted);
+}
+
+.fleet-img-caption {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    text-align: right;
 }
 
 .fleet-features {
     list-style: none;
-    margin: 25px 0;
+    margin: 2rem 0 2.5rem 0;
 }
 
 .fleet-features li {
-    font-size: 1.05rem;
-    margin-bottom: 12px;
-    color: #334155;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
 }
 
-.fleet-cta-text {
-    font-style: italic;
-    color: #64748B;
-    margin-bottom: 25px;
+.fleet-features li strong {
+    color: #ffffff;
 }
 
-/* 7. CONTACT WRAPPER SYSTEM */
+.feature-icon {
+    color: var(--color-gold);
+    line-height: 1.4;
+}
+
+.fleet-tagline {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   9. BOOKING & CONTACT WRAPPER
+   ========================================================================== */
 .contact {
-    background-color: var(--primary-blue);
-    color: var(--text-light);
+    background-color: var(--color-surface);
 }
 
-.contact-box {
-    max-width: 700px;
-    margin: 0 auto;
+.contact-inner {
+    background-color: var(--color-primary);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 5rem;
     text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
-.contact-box h2 {
-    color: var(--text-light);
+.contact-inner .section-title {
+    margin-bottom: 1.5rem;
 }
 
-.contact-box p {
-    color: #94A3B8;
-    margin-bottom: 40px;
+.contact-sub {
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin: 0 auto 3.5rem auto;
+    font-size: 1.1rem;
 }
 
 .contact-details {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-bottom: 40px;
-    text-align: left;
+    align-items: center;
+    gap: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1.25rem;
+    text-align: left;
 }
 
-.contact-item .icon {
-    font-size: 2rem;
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
-.contact-item h4 {
-    font-size: 0.9rem;
+.contact-detail-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    font-size: 0.75rem;
     text-transform: uppercase;
-    color: #94A3B8;
+    letter-spacing: 1.5px;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
 }
 
-.contact-item p a {
-    color: var(--text-light);
+.contact-value {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 700;
+    transition: color var(--transition-smooth);
 }
 
-.btn-whatsapp {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #25D366; /* Official WhatsApp Color */
-    color: var(--text-light);
-    padding: 16px 40px;
-    border-radius: 30px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
-    transition: var(--transition-smooth);
+a.contact-value:hover {
+    color: var(--color-gold);
 }
 
-.btn-whatsapp:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+.contact-divider {
+    width: 1px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* 8. FOOTER SYSTEM */
-footer {
-    background-color: #001A29;
-    padding: 40px 20px;
+/* ==========================================================================
+   10. FOOTER ACCENTS
+   ========================================================================== */
+.footer {
+    padding: 5rem 0 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-footer p {
-    color: #64748B;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-/* RESPONSIVE DESIGN BREAKPOINTS */
-@media (max-width: 968px) {
+.footer-tagline {
+    font-family: var(--font-serif);
+    color: var(--color-gold);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color var(--transition-smooth);
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   11. MEDIA RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
     .about-grid, .fleet-grid {
         grid-template-columns: 1fr;
+        gap: 4rem;
     }
-    .hero h1 {
-        font-size: 2.2rem;
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
+
+@media (max-width: 768px) {
+    .section-pad { padding: 5rem 0; }
+    
+    /* Responsive Mobile Navigation Drawer Logic */
+    .nav-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: #111111;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+        z-index: 1050;
+    }
+    
+    .nav-menu.open {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.35rem;
+    }
+    
+    .nav-menu .nav-cta {
+        margin-left: 0;
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    /* Toggle Button Transformations when open */
+    .nav-toggle.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-ghost {
+        margin-left: 0;
+    }
+    
+    .trust-container {
+        justify-content: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .trust-divider {
+        display: none;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-inner {
+        padding: 3rem 1.5rem;
+    }
+    
     .contact-details {
         flex-direction: column;
-        align-items: center;
-        gap: 25px;
+        gap: 1.5rem;
+        align-items: flex-start;
     }
-    .nav-menu {
-        display: none;
+    
+    .contact-divider {
+        width: 100%;
+        height: 1px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
     }
 }
