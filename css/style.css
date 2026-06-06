@@ -932,9 +932,15 @@ a.contact-value:hover { color: var(--gold); }
     }
     
     .nav-menu.open {
-        display: flex;
-        opacity: 1;
-        pointer-events: auto; /* Enables clicks when open */
+    display: flex;
+    opacity: 1;
+    pointer-events: auto; /* Enables clicks when open */
+    
+    /* ADD THESE TO FIX THE BACKGROUND ISSUE */
+    position: fixed;
+    inset: 0;
+    background-color: var(--midnight-dk); /* Forces the background color */
+    z-index: 9999; /* Ensures it stays on top of page content */
     }
 
     .nav-link {
