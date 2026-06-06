@@ -10,51 +10,41 @@ window.addEventListener('scroll', () => {
 
 // ── Mobile nav toggle ──
 const toggle = document.getElementById('navToggle');
-const menu = document.getElementById('navMenu');
+const menu   = document.getElementById('navMenu');
 
 const closeMenu = () => {
-    // Remove active classes
-    if (menu) menu.classList.remove('open');
+    if (menu)   menu.classList.remove('open');
     if (toggle) toggle.classList.remove('open');
-    
-    // Remove the scroll-lock utility class
     document.body.classList.remove('no-scroll');
 };
 
-// Toggle handler
 if (toggle && menu) {
     toggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = menu.classList.toggle('open');
         toggle.classList.toggle('open', isOpen);
-        
-        // Toggle the scroll-lock class defined in your CSS
         document.body.classList.toggle('no-scroll', isOpen);
     });
 
-    // Close menu when clicking ANY link
+    // Close on any link click
     menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenu();
-        });
+        link.addEventListener('click', closeMenu);
     });
 }
 
-// Anti-freeze: Close menu if user clicks outside the menu or toggle
+// Close when clicking outside
 document.addEventListener('click', (e) => {
     if (menu && menu.classList.contains('open')) {
-        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        if (!menu.contains(e.target) && toggle && !toggle.contains(e.target)) {
             closeMenu();
         }
     }
 });
 
-// Safeguard: Reset if window resizes (tablet to desktop)
+// Reset on resize to desktop
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && menu && menu.classList.contains('open')) {
-        closeMenu();
-    }
-});
+    if (window.innerWidth > 768) closeMenu();
+}, { passive: true });
 
 // ── Scroll reveal ──
 const revealEls = document.querySelectorAll('[data-reveal]');
@@ -66,7 +56,6 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
 revealEls.forEach(el => observer.observe(el));
 
 // ── Active nav link on scroll ──
@@ -75,19 +64,10 @@ const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
     sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 140) {
-            current = section.id;
-        }
+        if (window.scrollY >= section.offsetTop - 140) current = section.id;
     });
-
     navLinks.forEach(link => {
-        const targetId = link.getAttribute('href');
-        if (targetId === `#${current}`) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
 }, { passive: true });
