@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="luxuryGoldGrad" x1="120" y1="80" x2="380" y2="420" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFF3B3" />
+            <stop offset="20%" stop-color="#D4AF37" />
+            <stop offset="40%" stop-color="#AA7C11" />
+            <stop offset="60%" stop-color="#F3E5AB" />
+            <stop offset="80%" stop-color="#D4AF37" />
+            <stop offset="100%" stop-color="#5A450C" />
+        </linearGradient>
+        <filter id="premiumGlow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.65" />
+            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4" />
+        </filter>
+    </defs>
+    <path d="M 250,253.5 
+             C 236.2,253.5 212.7,219.7 186.2,168.1 161.7,120.3 125.6,90.4 121.2,93.4 116.8,96.5 140.2,156.4 171.7,216.5 177.3,227.1 144.5,214.3 115.5,207.2 110.1,205.9 110.2,213.9 115.5,217.1 127.1,224.2 165.7,236.5 186.1,245.5 191.1,247.7 175.7,270.5 155.1,299.1 133.7,328.7 127.9,372.5 128.5,373.1 129.1,373.7 163.6,346.5 193.5,313.1 214.5,289.7 236.1,273.7 250,273.7 
+             C 263.9,273.7 285.5,289.7 306.5,313.1 336.4,346.5 370.9,373.7 371.5,373.1 372.1,372.5 366.3,328.7 344.9,299.1 324.3,270.5 308.9,247.7 313.9,245.5 334.3,236.5 372.9,224.2 384.5,217.1 389.8,213.9 389.9,205.9 384.5,207.2 355.5,214.3 322.7,227.1 328.3,216.5 359.8,156.4 383.2,96.5 378.8,93.4 374.4,90.4 338.3,120.3 313.8,168.1 287.3,219.7 263.8,253.5 250,253.5 Z" 
+          fill="url(#luxuryGoldGrad)" 
+          filter="url(#premiumGlow)" />
+</svg>
