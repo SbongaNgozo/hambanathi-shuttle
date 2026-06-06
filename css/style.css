@@ -128,13 +128,22 @@ a  { text-decoration: none; color: inherit; }
 
 
 /* 3. NAVIGATION */
+/* 1. Ensure the Navbar always stays on top */
 .navbar {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000;
-    padding: 0;
-    transition: background var(--t) var(--ease), box-shadow var(--t) var(--ease), padding var(--t) var(--ease);
+    z-index: 99999; /* Use a very high number to force it above everything */
+}
+/* 2. Ensure the Menu opens OVER the navbar and page content */
+.nav-menu.open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: var(--midnight-dk);
+    z-index: 99998; /* Just below the navbar so the hamburger remains clickable */
+    pointer-events: auto;
 }
 .navbar.scrolled {
     background: rgba(0,28,40,0.97);
