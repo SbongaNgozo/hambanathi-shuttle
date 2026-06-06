@@ -129,22 +129,15 @@ a  { text-decoration: none; color: inherit; }
 
 /* 3. NAVIGATION */
 /* 1. Ensure the Navbar always stays on top */
+/* 3. NAVIGATION */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 99999; /* Use a very high number to force it above everything */
+    z-index: 1000;
 }
-/* 2. Ensure the Menu opens OVER the navbar and page content */
-.nav-menu.open {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: var(--midnight-dk);
-    z-index: 99998; /* Just below the navbar so the hamburger remains clickable */
-    pointer-events: auto;
-}
+
 .navbar.scrolled {
     background: rgba(0,28,40,0.97);
     backdrop-filter: blur(16px);
@@ -160,72 +153,11 @@ a  { text-decoration: none; color: inherit; }
     justify-content: space-between;
     transition: padding var(--t) var(--ease);
 }
-.navbar.scrolled .nav-container { padding-top: 15px; padding-bottom: 15px; }
+.navbar.scrolled .nav-container { padding: 15px 40px; }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo-icon {
-    display: block;
-    flex-shrink: 0;
-    transition: filter 0.3s ease;
-}
-.nav-logo:hover .logo-icon {
-    filter: drop-shadow(0 0 8px rgba(212,175,55,0.4));
-}
-.logo-wordmark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    color: var(--white);
-    text-transform: uppercase;
-}
+/* ... (Keep your existing .nav-logo, .nav-menu, .nav-link, .nav-cta styles here) ... */
 
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-}
-.nav-link {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.72);
-    transition: color var(--t) var(--ease);
-    position: relative;
-    will-change: color;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width var(--t) var(--ease);
-    will-change: width;
-}
-.nav-link:hover {
-    color: var(--white);
-}
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-cta {
-    color: var(--white) !important;
-    border: 1.5px solid var(--gold);
-    padding: 10px 22px;
-    letter-spacing: 0.1em;
-    transition: background var(--t) var(--ease), color var(--t) var(--ease) !important;
-}
-.nav-cta:hover { background: var(--gold); }
-.nav-cta::after { display: none; }
-
-/* Hamburger */
+/* Hamburger Button Base Style */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -234,18 +166,14 @@ a  { text-decoration: none; color: inherit; }
     border: none;
     cursor: pointer;
     padding: 4px;
+    z-index: 1001;
 }
 .nav-toggle span {
     display: block;
     width: 24px; height: 1.5px;
     background: var(--white);
     transition: all 0.3s var(--ease);
-    transform-origin: center;
 }
-.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
 
 /* 4. HERO */
 .hero {
@@ -912,22 +840,16 @@ a.contact-value:hover { color: var(--gold); }
 
 /* 12. RESPONSIVE */
 @media (max-width: 1020px) {
-    .about-grid  { grid-template-columns: 1fr; gap: 56px; }
-    .fleet-grid  { grid-template-columns: 1fr; gap: 50px; }
+    .about-grid { grid-template-columns: 1fr; gap: 56px; }
+    .fleet-grid { grid-template-columns: 1fr; gap: 50px; }
     .services-grid { grid-template-columns: 1fr; gap: 0; }
-    .service-card { border-bottom: 1px solid rgba(0,40,61,0.06); }
 }
 
 @media (max-width: 768px) {
-    .container { padding: 0 24px; }
-    .section-pad { padding: 80px 0; }
-
-    /* Mobile nav */
     .nav-toggle { display: flex; }
-    .nav-container { padding: 18px 24px; }
     
     .nav-menu {
-        display: none;
+        display: flex;
         flex-direction: column;
         position: fixed;
         inset: 0;
@@ -935,22 +857,11 @@ a.contact-value:hover { color: var(--gold); }
         justify-content: center;
         align-items: center;
         z-index: 999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none; /* Prevents hidden menu from blocking clicks */
+        transform: translateY(-100%);
+        transition: transform 0.4s var(--ease);
     }
     
-    .nav-menu.open {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto; /* Enables clicks when open */
-    
-    /* ADD THESE TO FIX THE BACKGROUND ISSUE */
-    position: fixed;
-    inset: 0;
-    background-color: var(--midnight-dk); /* Forces the background color */
-    z-index: 9999; /* Ensures it stays on top of page content */
-    }
+    .nav-menu.open { transform: translateY(0); }
 
     .nav-link {
         font-size: 1.2rem;
@@ -1018,24 +929,16 @@ a.contact-value:hover { color: var(--gold); }
 /* Ensure the menu resets to a standard navbar on desktop */
 @media (min-width: 769px) {
     .nav-menu {
-        display: flex !important;      /* Forces visible */
-        position: static !important;   /* Breaks it out of fixed/absolute */
-        opacity: 1 !important;
-        pointer-events: auto !important;
+        display: flex !important;
+        transform: none !important;
+        position: static !important;
         background: transparent !important;
         height: auto !important;
-        width: auto !important;
-        flex-direction: row !important; /* Forces horizontal links */
     }
-    
-    .nav-toggle {
-        display: none !important;      /* Hides the burger icon */
-    }
+    .nav-toggle { display: none !important; }
 }
 
 /* Utility class for mobile menu scroll lock */
-body.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
+body.no-scroll { overflow: hidden; }
+
 
