@@ -1014,3 +1014,28 @@ a.contact-value:hover { color: var(--gold); }
     .contact-divider { display: none; }
     .btn-whatsapp { width: 100%; justify-content: center; }
 }
+
+/* Ensure the menu resets to a standard navbar on desktop */
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex !important;      /* Forces visible */
+        position: static !important;   /* Breaks it out of fixed/absolute */
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        background: transparent !important;
+        height: auto !important;
+        width: auto !important;
+        flex-direction: row !important; /* Forces horizontal links */
+    }
+    
+    .nav-toggle {
+        display: none !important;      /* Hides the burger icon */
+    }
+}
+
+/* Utility class for mobile menu scroll lock */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+

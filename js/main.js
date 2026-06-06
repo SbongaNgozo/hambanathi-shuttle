@@ -1,4 +1,4 @@
-/* HAMBANATHI - Main JS */
+/* HAMBANATHI — Main JS */
 
 // ── Navbar scroll state ──
 const navbar = document.getElementById('navbar');
@@ -12,15 +12,13 @@ window.addEventListener('scroll', () => {
 const toggle = document.getElementById('navToggle');
 const menu = document.getElementById('navMenu');
 
-const closeMenu = (e) => {
-    if (e) e.stopPropagation();
-    
+const closeMenu = () => {
     // Remove active classes
     if (menu) menu.classList.remove('open');
     if (toggle) toggle.classList.remove('open');
     
-    // Explicitly reset body scroll
-    document.body.style.overflow = '';
+    // Remove the scroll-lock utility class
+    document.body.classList.remove('no-scroll');
 };
 
 // Toggle handler
@@ -30,14 +28,14 @@ if (toggle && menu) {
         const isOpen = menu.classList.toggle('open');
         toggle.classList.toggle('open', isOpen);
         
-        // Smoothly toggle scroll lock
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        // Toggle the scroll-lock class defined in your CSS
+        document.body.classList.toggle('no-scroll', isOpen);
     });
 
     // Close menu when clicking ANY link
     menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            closeMenu(e);
+        link.addEventListener('click', () => {
+            closeMenu();
         });
     });
 }
