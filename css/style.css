@@ -163,6 +163,14 @@ a  { text-decoration: none; color: inherit; }
     text-decoration: none;
     flex-shrink: 0;
 }
+
+.nav-logo-img {
+    height: 62px; /* Adjust this to make the logo look appropriate */
+    width: auto;
+    display: block;
+    object-fit: contain; /* Prevents stretching if the logo is a different shape */
+}
+
 .logo-icon {
     display: block;
     flex-shrink: 0;
@@ -171,14 +179,7 @@ a  { text-decoration: none; color: inherit; }
 .nav-logo:hover .logo-icon {
     filter: drop-shadow(0 0 8px rgba(212,175,55,0.4));
 }
-.logo-wordmark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    color: var(--white);
-    text-transform: uppercase;
-}
+
 
 /* ── Desktop menu ── */
 .nav-menu {
@@ -888,31 +889,16 @@ a.contact-value:hover { color: var(--gold); }
 }
 .footer-container { max-width: 1160px; margin: 0 auto; }
 .footer-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
+    display: block;
+    margin-bottom: 20px;
 }
-.footer-logo span {
-    color: #D4AF37 !important;
-}
-.footer-tagline {
-    font-family: 'Great Vibes', cursive !important;
-    color: #D4AF37 !important;
-    font-size: 2.5rem !important;
-    text-align: center;
-    margin-bottom: 0 !important;
+.footer-logo-img {
+    height: 150px; /* Adjust this for the footer size */
+    width: auto;
+    margin: 0 auto;
     display: block;
 }
-.sub-slogan {
-    display: block !important;
-    font-family: 'DM Sans', sans-serif !important;
-    color: #D4AF37 !important;
-    font-size: 0.9rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.3em !important;
-    margin-top: 10px !important;
-}
+
 .footer-links {
     display: flex;
     justify-content: center;
