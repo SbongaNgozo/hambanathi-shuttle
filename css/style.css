@@ -136,7 +136,7 @@ a  { text-decoration: none; color: inherit; }
     width: 100%;
     z-index: 9999;
     background: transparent;
-    transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+    transition: background 0.35s ease, box-shadow 0.35s ease;
 }
 .navbar.scrolled {
     background: rgba(0,26,40,0.97);
@@ -153,10 +153,7 @@ a  { text-decoration: none; color: inherit; }
     justify-content: space-between;
     transition: padding 0.35s ease;
 }
-.navbar.scrolled .nav-container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
+.navbar.scrolled .nav-container { padding-top: 15px; padding-bottom: 15px; }
 
 /* ── Logo ── */
 .nav-logo {
@@ -189,6 +186,7 @@ a  { text-decoration: none; color: inherit; }
     align-items: center;
     gap: 36px;
 }
+
 .nav-link {
     font-size: 0.78rem;
     font-weight: 500;
@@ -209,18 +207,12 @@ a  { text-decoration: none; color: inherit; }
     transition: width 0.35s ease;
     will-change: width;
 }
-.nav-link:hover {
-    color: var(--white);
-}
+.nav-link:hover { color: var(--white); }
 .nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-.nav-link.active {
-    color: var(--white);
-}
+.nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--white); }
 
-/* ── Book A Ride CTA button ── */
+/* ── Book A Ride CTA ── */
 .nav-cta {
     color: var(--white) !important;
     border: 1.5px solid var(--gold);
@@ -228,13 +220,10 @@ a  { text-decoration: none; color: inherit; }
     letter-spacing: 0.1em;
     transition: background 0.35s ease, color 0.35s ease !important;
 }
-.nav-cta:hover {
-    background: var(--gold);
-    color: var(--midnight) !important;
-}
+.nav-cta:hover { background: var(--gold); color: var(--midnight) !important; }
 .nav-cta::after { display: none; }
 
-/* ── Hamburger toggle — hidden on desktop ── */
+/* ── Hamburger — hidden on desktop ── */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -248,14 +237,12 @@ a  { text-decoration: none; color: inherit; }
 }
 .toggle-bar {
     display: block;
-    width: 24px;
-    height: 1.5px;
+    width: 24px; height: 1.5px;
     background: var(--white);
     border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center;
 }
-/* Animate into X when open */
 .nav-toggle.open .toggle-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-toggle.open .toggle-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.open .toggle-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -266,11 +253,9 @@ body.no-scroll { overflow: hidden; }
 /* ── MOBILE (≤ 768px) ── */
 @media (max-width: 768px) {
     .nav-container { padding: 18px 24px; }
-
     .nav-toggle { display: flex; }
 
     .nav-menu {
-        /* Hidden off-screen above viewport */
         position: fixed;
         inset: 0;
         background: rgba(0,20,30,0.98);
@@ -280,10 +265,8 @@ body.no-scroll { overflow: hidden; }
         align-items: center;
         gap: 0;
         z-index: 10000;
-        /* Slide up from above */
         transform: translateY(-100%);
-        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        /* Hidden from tab focus when closed */
+        transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1);
         visibility: hidden;
     }
     .nav-menu.open {
@@ -310,18 +293,13 @@ body.no-scroll { overflow: hidden; }
         padding: 14px 40px !important;
         margin-top: 24px;
         color: var(--gold) !important;
-        letter-spacing: 0.18em;
     }
-    .nav-cta:hover {
-        background: var(--gold) !important;
-        color: var(--midnight) !important;
-    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--midnight) !important; }
 }
 
-/* ── DESKTOP RESET (> 768px) — ensure no mobile styles leak ── */
+/* ── DESKTOP RESET (> 768px) — prevent any mobile styles leaking ── */
 @media (min-width: 769px) {
     .nav-menu {
-        /* Force reset — no transform, no overlay */
         position: static !important;
         transform: none !important;
         visibility: visible !important;
@@ -330,12 +308,12 @@ body.no-scroll { overflow: hidden; }
         flex-direction: row !important;
         align-items: center !important;
         gap: 36px !important;
-        inset: auto !important;
         z-index: auto !important;
         transition: none !important;
     }
     .nav-toggle { display: none !important; }
 }
+
 
 /* 4. HERO */
 .hero {
@@ -389,13 +367,10 @@ body.no-scroll { overflow: hidden; }
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 160px 40px 80px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 120px 24px 80px;
     animation: heroIn 1.2s var(--ease-out) both;
 }
 
@@ -407,7 +382,6 @@ body.no-scroll { overflow: hidden; }
 .hero-badge {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 14px;
     margin-bottom: 28px;
     font-size: 0.72rem;
@@ -421,20 +395,24 @@ body.no-scroll { overflow: hidden; }
 
 .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
     font-weight: 600;
     color: var(--white);
-    line-height: 1.15;
+    line-height: 0.9;
     margin-bottom: 28px;
+    width: 100vw;
+    max-width: 100%;
     text-align: center;
+    padding: 0 20px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
     animation: heroIn 1s 0.35s var(--ease-out) both;
 }
 .hero-title em {
     font-style: italic;
     color: var(--gold);
     display: block;
-    font-weight: 500;
-    margin-top: 6px;
+    font-weight: 400;
+    margin-top: 8px;
 }
 
 .hero-copy {
@@ -443,14 +421,12 @@ body.no-scroll { overflow: hidden; }
     max-width: 560px;
     line-height: 1.75;
     margin-bottom: 44px;
-    text-align: center;
     animation: heroIn 1s 0.5s var(--ease-out) both;
 }
 .hero-copy em { color: var(--gold-lt); font-style: italic; }
 
 .hero-actions {
     display: flex;
-    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
     animation: heroIn 1s 0.65s var(--ease-out) both;
@@ -601,7 +577,7 @@ body.no-scroll { overflow: hidden; }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2px;
     background: rgba(0,40,61,0.06);
     border: 1px solid rgba(0,40,61,0.06);
@@ -612,10 +588,10 @@ body.no-scroll { overflow: hidden; }
     padding: 44px 36px 40px;
     display: flex;
     flex-direction: column;
+    min-height: 300px;
     position: relative;
-    transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
-    overflow: hidden;
 }
+
 .service-card::before {
     content: '';
     position: absolute;
@@ -631,56 +607,6 @@ body.no-scroll { overflow: hidden; }
     transform: translateY(-4px);
     box-shadow: 0 20px 50px rgba(0,40,61,0.1);
     z-index: 2;
-}
-
-.service-card.featured {
-    background: var(--midnight);
-    color: var(--white);
-}
-.service-card.featured::before {
-    background: linear-gradient(90deg, var(--gold), var(--gold-lt));
-    transform: scaleX(1);
-}
-.service-card.featured h3,
-.service-card.featured p { color: var(--white); }
-.service-card.featured .service-sub { color: var(--gold); }
-.service-card.featured p:not(.service-sub) { color: rgba(255,255,255,0.72); }
-
-.service-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
-}
-.service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-}
-.service-icon-wrap {
-    width: 48px; height: 48px;
-    border: 1px solid rgba(212,175,55,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    transition: background var(--t) var(--ease);
-}
-.service-card:hover .service-icon-wrap { background: var(--gold-pale); }
-
-.featured-badge {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--midnight);
-    background: var(--gold);
-    padding: 4px 10px;
-    margin-bottom: 14px;
-    width: fit-content;
 }
 
 .service-card h3 {
@@ -741,7 +667,6 @@ body.no-scroll { overflow: hidden; }
 }
 .fleet-image-wrap:hover img { transform: scale(1.03); }
 
-/* Decorative frame */
 .fleet-image-inner::before {
     content: '';
     position: absolute;
@@ -770,8 +695,6 @@ body.no-scroll { overflow: hidden; }
     letter-spacing: 0.15em;
     text-transform: uppercase;
 }
-
-
 
 .fleet-features {
     list-style: none;
@@ -930,18 +853,24 @@ a.contact-value:hover { color: var(--gold); }
     margin-bottom: 8px;
 }
 .footer-logo span {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    color: var(--white);
+    color: #D4AF37 !important;
 }
 .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--gold);
-    margin-bottom: 32px;
+    font-family: 'Great Vibes', cursive !important;
+    color: #D4AF37 !important;
+    font-size: 2.5rem !important;
+    text-align: center;
+    margin-bottom: 0 !important;
+    display: block;
+}
+.sub-slogan {
+    display: block !important;
+    font-family: 'DM Sans', sans-serif !important;
+    color: #D4AF37 !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3em !important;
+    margin-top: 10px !important;
 }
 .footer-links {
     display: flex;
@@ -988,14 +917,10 @@ a.contact-value:hover { color: var(--gold); }
     .about-grid  { grid-template-columns: 1fr; gap: 56px; }
     .fleet-grid  { grid-template-columns: 1fr; gap: 50px; }
     .services-grid { grid-template-columns: 1fr; gap: 0; }
-    .service-card { border-bottom: 1px solid rgba(0,40,61,0.06); }
 }
 
 @media (max-width: 768px) {
-    .container { padding: 0 24px; }
-    .section-pad { padding: 80px 0; }
-
-    .hero-content { padding: 100px 24px 60px; }
+    .hero-content { padding: 120px 24px 80px; }
     .hero-scroll-indicator { display: none; }
 
     .trust-container { gap: 20px; }
@@ -1007,12 +932,20 @@ a.contact-value:hover { color: var(--gold); }
     .contact-divider { width: 100%; height: 1px; }
 
     .services-bg-text { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
 
     .footer-links { gap: 20px; }
 }
 
 @media (max-width: 480px) {
-    .hero-title { font-size: 2.1rem; }
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 6.5rem);
+        font-weight: 500;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        margin-bottom: 32px;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
     .hero-actions { flex-direction: column; }
     .btn-primary, .btn-ghost { text-align: center; width: 100%; }
     .service-card { padding: 32px 24px; }

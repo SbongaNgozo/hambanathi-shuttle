@@ -14,7 +14,7 @@ const menu   = document.getElementById('navMenu');
 
 const closeMenu = () => {
     if (menu)   menu.classList.remove('open');
-    if (toggle) toggle.classList.remove('open');
+    if (toggle) { toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
     document.body.classList.remove('no-scroll');
 };
 
@@ -23,10 +23,11 @@ if (toggle && menu) {
         e.stopPropagation();
         const isOpen = menu.classList.toggle('open');
         toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
         document.body.classList.toggle('no-scroll', isOpen);
     });
 
-    // Close on any link click
+    // Close on any nav link click
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
@@ -68,6 +69,7 @@ window.addEventListener('scroll', () => {
         if (window.scrollY >= section.offsetTop - 140) current = section.id;
     });
     navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        const isActive = link.getAttribute('href') === `#${current}`;
+        link.classList.toggle('active', isActive);
     });
 }, { passive: true });
