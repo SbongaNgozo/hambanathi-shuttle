@@ -14,22 +14,39 @@ const menu   = document.getElementById('navMenu');
 
 const closeMenu = () => {
     if (menu)   menu.classList.remove('open');
-    if (toggle) { toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    if (toggle) {
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+    }
     document.body.classList.remove('no-scroll');
+};
+
+const openMenu = () => {
+    if (menu)   menu.classList.add('open');
+    if (toggle) {
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+    }
+    document.body.classList.add('no-scroll');
 };
 
 if (toggle && menu) {
     toggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = menu.classList.toggle('open');
-        toggle.classList.toggle('open', isOpen);
-        toggle.setAttribute('aria-expanded', String(isOpen));
-        document.body.classList.toggle('no-scroll', isOpen);
+        menu.classList.contains('open') ? closeMenu() : openMenu();
     });
 
     // Close on any nav link click
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
+    });
+}
+
+// Close when clicking the overlay background (not on links)
+if (menu) {
+    menu.addEventListener('click', (e) => {
+        // If they clicked the overlay itself (not a child link), close
+        if (e.target === menu) closeMenu();
     });
 }
 
@@ -69,7 +86,6 @@ window.addEventListener('scroll', () => {
         if (window.scrollY >= section.offsetTop - 140) current = section.id;
     });
     navLinks.forEach(link => {
-        const isActive = link.getAttribute('href') === `#${current}`;
-        link.classList.toggle('active', isActive);
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
 }, { passive: true });

@@ -258,43 +258,83 @@ body.no-scroll { overflow: hidden; }
     .nav-menu {
         position: fixed;
         inset: 0;
-        background: rgba(0,20,30,0.98);
-        backdrop-filter: blur(12px);
+        /* Fixes height issues on mobile address bars */
+        height: 100vh; 
+        height: 100svh; 
+        background: #001520;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 0;
+        gap: 20px; 
         z-index: 10000;
-        transform: translateY(-100%);
-        transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1);
-        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        
+        /* Ensures content is scrollable and doesn't cut off */
+        overflow-y: auto;
+        padding: 80px 20px;
+        
+        /* Prevents scroll chaining/jumping */
+        overscroll-behavior: contain;
     }
+
     .nav-menu.open {
-        transform: translateY(0);
-        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Close (X) button rendered inside overlay */
+    .nav-menu::before {
+        content: '×';
+        position: absolute;
+        top: 24px;
+        right: 28px;
+        font-size: 2.2rem;
+        line-height: 1;
+        color: rgba(255,255,255,0.7);
+        cursor: pointer;
+        font-family: sans-serif;
+        font-weight: 300;
+        pointer-events: none; /* JS handles close via toggle */
+    }
+
+    /* Gold top accent line */
+    .nav-menu::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     .nav-link {
         font-size: 1.3rem;
         font-weight: 500;
         letter-spacing: 0.16em;
-        color: rgba(255,255,255,0.8);
-        padding: 18px 0;
-        width: 100%;
+        color: rgba(255,255,255,0.75);
+        padding: 20px 0;
+        width: 80%;
         text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        transition: color 0.2s ease;
     }
-    .nav-link:last-child { border-bottom: none; }
+    .nav-link:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
     .nav-link:hover, .nav-link.active { color: var(--gold); }
     .nav-link::after { display: none; }
 
     .nav-cta {
         border: 1.5px solid var(--gold) !important;
-        padding: 14px 40px !important;
-        margin-top: 24px;
+        padding: 14px 48px !important;
+        margin-top: 32px;
         color: var(--gold) !important;
+        border-bottom: none !important;
+        letter-spacing: 0.2em;
     }
-    .nav-cta:hover { background: var(--gold) !important; color: var(--midnight) !important; }
+    .nav-cta:hover {
+        background: var(--gold) !important;
+        color: var(--midnight) !important;
+    }
 }
 
 /* ── DESKTOP RESET (> 768px) — prevent any mobile styles leaking ── */
